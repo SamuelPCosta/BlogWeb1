@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "tailwindcss build -i ./blog/src/css/style.css -o ./blog/src/css/style.css",
+    "watch-css": "tailwindcss build -i ./blog/src/css/style.css -o ./blog/src/css/style.css --watch"
+  },
+  "dependencies": {
+    "react-router-dom": "^6.28.0"
+  }
+}
