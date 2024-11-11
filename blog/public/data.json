@@ -1,43 +1,50 @@
 [
     {
+        "id": 0,
         "title": "Arcane",
         "img": "https://mixdeseries.com.br/wp-content/uploads/2024/11/arcane-2-temporada-ato-2.jpg",
         "text": "\"Arcane\" é uma série animada baseada no universo do jogo League of Legends, produzida pela Riot Games. Com uma narrativa envolvente e complexa, a trama explora as origens de personagens icônicos como Vi, Jinx, Caitlyn e Jayce, entre outros, enquanto mergulha nas tensões entre as cidades de Piltover e Zaun. A série combina ação, drama e questões sociais, oferecendo uma nova camada de profundidade ao lore do jogo.",
         "sinopse": "Série Arcane estreia sua segunda temporada em novembro."
     },
     {
+        "id": 1,
         "title": "The Bear",
-        "img": "https://example.com/the-bear.jpg",
+        "img": "https://img.odcdn.com.br/wp-content/uploads/2022/12/the-bear-serie-melhores-de-2022-e1671029630117.jpg",
         "text": "\"The Bear\" acompanha um jovem chef que retorna para Chicago para assumir o restaurante da família após uma tragédia. Lida com os desafios de equilibrar o ambiente caótico e o relacionamento com sua equipe.",
         "sinopse": "Drama sobre um chef lidando com o caos de um restaurante de bairro."
     },
     {
+        "id": 2,
         "title": "The Last of Us",
-        "img": "https://example.com/the-last-of-us.jpg",
+        "img": "https://sm.ign.com/ign_br/gallery/t/the-last-o/the-last-of-us-hbo-series-character-guide_nr24.jpg",
         "text": "\"The Last of Us\" adapta o famoso jogo de videogame, retratando um mundo devastado por uma pandemia e acompanhando Joel e Ellie em sua luta pela sobrevivência, enquanto enfrentam horrores e desafios emocionais.",
         "sinopse": "Adaptação de um jogo, acompanha sobreviventes em um mundo pós-apocalíptico."
     },
     {
+        "id": 3,
         "title": "House of the Dragon",
-        "img": "https://example.com/house-of-the-dragon.jpg",
+        "img": "https://img.odcdn.com.br/wp-content/uploads/2024/07/house-of-the-dragon-viserys-rhaenyra-daemon-foto-divulgacao-hbo-1024x576.jpg",
         "text": "\"House of the Dragon\" retorna ao universo de *Game of Thrones*, explorando a dinastia Targaryen 200 anos antes dos eventos originais. A série mergulha em temas de poder e conflito familiar, destacando intrigas e disputas pelo Trono de Ferro.",
         "sinopse": "Prequela de *Game of Thrones* focada na casa Targaryen."
     },
     {
+        "id": 4,
         "title": "Severance",
-        "img": "https://example.com/severance.jpg",
+        "img": "https://blog.atacadocollections.com/wp-content/uploads/2022/02/Imagem-texto-2-9.jpg",
         "text": "\"Severance\" segue uma equipe que passa por um procedimento que separa memórias profissionais das pessoais. A história explora como essa divisão afeta suas vidas e os leva a questionar o controle sobre suas identidades.",
         "sinopse": "Thriller sobre trabalhadores que dividem memórias entre vida pessoal e profissional."
     },
     {
+        "id": 5,
         "title": "Andor",
-        "img": "https://example.com/andor.jpg",
+        "img": "https://woomagazine.com.br/wp-content/uploads/2024/11/Andor-1200x600.webp",
         "text": "\"Andor\" é ambientada no universo de *Star Wars* e acompanha Cassian Andor, um espião da Aliança Rebelde. A série explora os primeiros anos de resistência ao Império, mostrando o lado sombrio e perigoso da luta pela liberdade.",
         "sinopse": "História de espionagem e resistência no universo *Star Wars*."
     },
     {
+        "id": 6,
         "title": "Euphoria",
-        "img": "https://example.com/euphoria.jpg",
+        "img": "https://i.ytimg.com/vi/6XGnv7Zgbeg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLChDdDStY4Ieu2nnoAoG1hN__WqvQ",
         "text": "\"Euphoria\" acompanha a vida de Rue e seus amigos enquanto enfrentam vícios, problemas emocionais e relacionamentos conturbados. A série explora temas como identidade, traumas e a busca por pertencimento na juventude moderna.",
         "sinopse": "Drama sobre adolescentes lidando com vícios e questões emocionais."
     }

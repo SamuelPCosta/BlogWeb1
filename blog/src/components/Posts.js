@@ -41,7 +41,7 @@ export function Post({postData}) {
 
 export function MainPost() {
   const [postData, setPostData] = useState({
-    id: '1',
+    id: '0',
     title: 'Sem titulo',
     img: '',
     text: 'Sem texto',
@@ -56,7 +56,7 @@ export function MainPost() {
         }
         return response.json();
       })
-      .then(data => setPostData(data[0])) // Assumindo que você quer o primeiro item do JSON
+      .then(data => setPostData(data[0]))
       .catch(error => console.error('Error fetching data:', error));
   }, []);
 
@@ -87,7 +87,7 @@ export function MainPost() {
           </div>
 
           <button 
-            onClick={(e) => { e.preventDefault(); addToList(); }} 
+            onClick={(e) => { e.preventDefault(); addToList(0); }}
             className="w-full bg-gray-50 py-4 rounded-xl text-black font-semibold hover:bg-gray-300 transition-colors mt-4">
             Adicionar à lista de leitura
           </button>
@@ -100,16 +100,39 @@ export function MainPost() {
   );
 }
 
-export function PostPreview({ imageSrc, text }) {
+export function PostPreview({id, img, text }) {
+
+    const [postData, setPostData] = useState(null);
+    useEffect(() => {
+        fetch('/data.json')
+        .then(response => {
+            if (!response.ok) {
+            throw new Error('Failed to load JSON');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Encontrar o objeto que corresponde ao id
+            const post = data.find(item => item.id === id);
+            setPostData(post); // Definir o estado com o post correspondente
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    }, [id]); // Recarregar sempre que o id mudar
+
+    if (!postData) {
+        return <div>Loading...</div>;
+    }
+    
   return (
-    <Link to={'/post'}>
+    // <Link to={'/post'}>
+    <Link to={'/post'} state={postData} onClick={window.scrollTo(0, 0)}>
     <a href="" className="group">
-        <div className="relative bg-gray-100 shadow-md rounded-xl overflow-hidden">
-            <img src={imageSrc} alt="" className="w-full"/>
-                <div onClick={(e) => { e.preventDefault(); addToList(); }}  className="absolute top-2 right-2 w-2/3 h-10 ml-auto rounded-lg font-semibold text-lg bg-gray-500 text-center flex items-center
+        <div className="relative bg-gray-100 shadow-md rounded-xl max-h-80 overflow-hidden">
+            <img src={img || "https://via.placeholder.com/600x400"} alt="" className="w-full aspect-video overflow-hidden object-cover max-h-48 object-top"/>
+                <div onClick={(e) => { e.preventDefault(); addToList(id); }}  className="absolute top-2 right-2 w-2/3 h-10 ml-auto rounded-lg font-semibold text-lg bg-gray-500 text-center flex items-center
                 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-gray-600 ">
                     <h4 className="w-full text-white">
-                      <i class="fas fa-circle-plus text-white pr-2"></i>
+                      <i class="fas fa-plus text-white pr-2"></i>
                       Adicionar à lista de leitura
                     </h4>
                 </div>
@@ -126,6 +149,13 @@ PostPreview.defaultProps = {
 
 export default Post;
 
-function addToList(){
-  console.log("a")
-}
+function addToList(key) {
+    const existingList = JSON.parse(localStorage.getItem('readingList')) || [];
+
+    if (!existingList.includes(key)) {
+      existingList.push(key);
+    }
+    localStorage.setItem('readingList', JSON.stringify(existingList));
+
+    console.log(`Post com key ${key} adicionado à lista de leitura.`);
+  }
