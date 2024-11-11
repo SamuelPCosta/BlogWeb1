@@ -87,7 +87,7 @@ export function MainPost() {
           </div>
 
           <button 
-            onClick={(e) => { e.preventDefault(); addToList(0); }}
+            onClick={(e) => { e.preventDefault(); handleAddRemove(0); }}
             className="w-full bg-gray-50 py-4 rounded-xl text-black font-semibold hover:bg-gray-300 transition-colors mt-4">
             Adicionar à lista de leitura
           </button>
@@ -103,6 +103,8 @@ export function MainPost() {
 export function PostPreview({id, img, text }) {
 
     const [postData, setPostData] = useState(null);
+    const [isInReadingList, setIsInReadingList] = useState(false); 
+
     useEffect(() => {
         fetch('/data.json')
         .then(response => {
@@ -112,12 +114,28 @@ export function PostPreview({id, img, text }) {
             return response.json();
         })
         .then(data => {
-            // Encontrar o objeto que corresponde ao id
             const post = data.find(item => item.id === id);
-            setPostData(post); // Definir o estado com o post correspondente
+            setPostData(post); 
         })
         .catch(error => console.error('Error fetching data:', error));
-    }, [id]); // Recarregar sempre que o id mudar
+
+        const readingList = JSON.parse(localStorage.getItem('readingList')) || [];
+        setIsInReadingList(readingList.includes(id));
+    }, [id]); 
+
+    const handleAddRemove = () => {
+        let readingList = JSON.parse(localStorage.getItem('readingList')) || [];
+
+        if (isInReadingList) {
+            readingList = readingList.filter(item => item !== id);
+            window.location.reload()
+        } else {
+            readingList.push(id);
+        }
+        
+        localStorage.setItem('readingList', JSON.stringify(readingList));
+        setIsInReadingList(!isInReadingList);
+    };
 
     if (!postData) {
         return <div>Loading...</div>;
@@ -129,11 +147,11 @@ export function PostPreview({id, img, text }) {
     <a href="" className="group">
         <div className="relative bg-gray-100 shadow-md rounded-xl max-h-80 overflow-hidden">
             <img src={img || "https://via.placeholder.com/600x400"} alt="" className="w-full aspect-video overflow-hidden object-cover max-h-48 object-top"/>
-                <div onClick={(e) => { e.preventDefault(); addToList(id); }}  className="absolute top-2 right-2 w-2/3 h-10 ml-auto rounded-lg font-semibold text-lg bg-gray-500 text-center flex items-center
+                <div onClick={(e) => { e.preventDefault(); handleAddRemove(id) }}  className="absolute top-2 right-2 w-2/3 h-10 ml-auto rounded-lg font-semibold text-lg bg-gray-500 text-center flex items-center
                 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-gray-600 ">
                     <h4 className="w-full text-white">
                       <i class="fas fa-plus text-white pr-2"></i>
-                      Adicionar à lista de leitura
+                      {isInReadingList ? 'Remover da lista de leitura' : 'Adicionar à lista de leitura'}
                     </h4>
                 </div>
             <p className="text-lg text-gray-600 p-6 py-2 truncate-text max-h-24">{text}</p>
@@ -149,7 +167,7 @@ PostPreview.defaultProps = {
 
 export default Post;
 
-function addToList(key) {
+function handleAddRemove(key) {
     const existingList = JSON.parse(localStorage.getItem('readingList')) || [];
 
     if (!existingList.includes(key)) {
@@ -158,4 +176,4 @@ function addToList(key) {
     localStorage.setItem('readingList', JSON.stringify(existingList));
 
     console.log(`Post com key ${key} adicionado à lista de leitura.`);
-  }
+}
