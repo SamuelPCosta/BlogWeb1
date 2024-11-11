@@ -1,8 +1,7 @@
 import logo from '../logo.svg';
 import '../App.css';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export function Header() {
   return (
@@ -68,10 +67,10 @@ export function Post() {
   );
 }
 
-export function Main() {
+export function MainPost() {
   return (
     <span>
-    {/* <Link to={'/'}>a</Link> */}
+    <Link to={'post'}>
     <a href='post' className='hover:shadow-xl'>
       <h2 className="text-4xl font-bold mb-4 mt-12">EM DESTAQUE</h2>
       <span className='relative overflow-hidden rounded-xl'>
@@ -97,7 +96,8 @@ export function Main() {
         </div>
       </span>
     </a>
-    </span>  
+    </Link>
+    </span> 
   );
 }
 
